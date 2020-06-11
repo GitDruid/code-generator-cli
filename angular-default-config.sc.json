@@ -1,0 +1,15 @@
+{
+   "sortParamsByRequiredFlag": true,
+   "ensureUniqueParams": true,
+   "allowUnicodeIdentifiers": false,
+   "modelPropertyNaming": "camelCase",
+   "supportsES6": false,
+   "npmName": "",
+   "npmVersion": "0.0.1",
+   "npmRepository": "",
+   "snapshot": false,
+   "withInterfaces": false,
+   "taggedUnions": false,
+   "providedInRoot": false,
+   "ngVersion": "4.3"
+}
