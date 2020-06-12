@@ -1,3 +1,8 @@
+#
+# Script: Code generator from Swagger/OpenAPI specifications.
+# Author: Alessandro Galasso.
+# Requires: Docker Desktop.
+#
 param (
     #[Parameter(Mandatory)]
     $name,
@@ -8,7 +13,7 @@ param (
     #[Parameter(Mandatory)]
     $lang='typescript-angular',
 
-    $configFile='angular-config.sc.json'
+    $config='angular-config.sc.json'
 )
 
 if ($name -eq $null -or $name -eq '') {
@@ -21,7 +26,7 @@ Going to create API client
 Name:            '$name'
 Source:          '$source'
 Target language: '$lang'
-Extra config:    '$configFile'
+Extra config:    '$config'
 Folder:          '${PWD}\out\$name\$lang'
 
 "
@@ -36,30 +41,22 @@ if ($decision -eq 0) {
     Exit 1
 }
 
-if ($configFile -ne $null -or $configFile -ne '') {
-    $configFlag = "-c /local/$configFile"
-} else {
-    $configFlag = ""
-}
- 
 # swagger-codegen
 # https://swagger.io/tools/swagger-codegen/
-docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate -i $source -l $lang -o /local/out/$name/$lang $configFlag
+# GET LANGUAGE SPECIFIC CONFIG SETTINGS: docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli config-help -l $lang
 #
-# GET LANGUAGE SPECIFIC CONFIG SETTINGS
-#docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli config-help -l $lang
+if ($config -ne $null -or $config -ne '') {
+    docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate -i $source -l $lang -o /local/out/$name/$lang -c /local/$config
+} else {
+    docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate -i $source -l $lang -o /local/out/$name/$lang
+}
 
 # openapi-generator
 # https://openapi-generator.tech/
-#docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i $source -g $lang -o /local/out/$name/$lang $configFlag
+# GET LANGUAGE SPECIFIC CONFIG SETTINGS: docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli config-help -g $lang
 #
-# GET LANGUAGE SPECIFIC CONFIG SETTINGS
-#docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli config-help -g $lang
-
-
-#
-#
-# Readings:
-# https://stackoverflow.com/questions/58482822/openapi-tools-generator-vs-swagger-codegen
-#
-#
+#if ($config -ne $null -or $config -ne '') {
+#    docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i $source -g $lang -o /local/out/$name/$lang -c /local/$config
+#} else {
+#    docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i $source -g $lang -o /local/out/$name/$lang
+#}
