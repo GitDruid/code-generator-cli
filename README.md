@@ -8,9 +8,20 @@ Scripts contains both version but the Swagger CodeGen is the one currently selec
 
 # Usage
 
+Customize generate.ps1 script by settings its param section:
+
+    param (
+        $name,
+        $source='https://webservices-test.scientificnet.org/rest/biodiversity/swagger/docs/V1',
+        $lang='typescript-angular',
+        $config='angular-config.sc.json'
+    )
+
+and then execute it:
+
     .\generate.ps1
 
-or
+Alternatively you can pass parameters in the cli:
 
     .\generate.ps1 -name MySampleSDK -source http://petstore.swagger.io/v2/swagger.json -lang typescript-angular -config angular-config.sc.json
 
