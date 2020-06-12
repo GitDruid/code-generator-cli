@@ -1,4 +1,4 @@
-## Code generator from Swagger/OpenAPI specifications
+# Code generator from Swagger/OpenAPI specifications
 
 Windows PowerShell script for client code generation, given a Swagger/OpenAPI specification.  
 It requires Docker Desktop to run.  
@@ -6,7 +6,7 @@ It requires Docker Desktop to run.
 Currently there are two teams working on similar projects (see "Readings" below).  
 Scripts contains both version but the Swagger CodeGen is the one currently selected.  
 
-# Usage
+## Usage
 
 Customize generate.ps1 script by settings its param section:
 
@@ -25,15 +25,15 @@ Alternatively you can pass parameters in the cli:
 
     .\generate.ps1 -name MySampleSDK -source http://petstore.swagger.io/v2/swagger.json -lang typescript-angular -config angular-config.sc.json
 
-## Languages tool
+# Languages tool
 
 Retrieve info about supported languages and related config.  
 
-# Usage
+## Usage
 
     .\lang.ps1
 
-## Readings
+# Readings
 
 swagger-codegen  
 https://swagger.io/tools/swagger-codegen/
