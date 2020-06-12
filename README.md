@@ -12,7 +12,7 @@ Customize generate.ps1 script by settings its param section:
 
     param (
         $name,
-        $source='https://webservices-test.scientificnet.org/rest/biodiversity/swagger/docs/V1',
+        $source='http://petstore.swagger.io/v2/swagger.json',
         $lang='typescript-angular',
         $config='angular-config.sc.json'
     )

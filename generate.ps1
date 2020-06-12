@@ -8,7 +8,7 @@ param (
     $name,
 
     #[Parameter(Mandatory)]
-    $source='https://webservices-test.scientificnet.org/rest/biodiversity/swagger/docs/V1',
+    $source='http://petstore.swagger.io/v2/swagger.json',
 
     #[Parameter(Mandatory)]
     $lang='typescript-angular',
@@ -43,7 +43,6 @@ if ($decision -eq 0) {
 
 # swagger-codegen
 # https://swagger.io/tools/swagger-codegen/
-# GET LANGUAGE SPECIFIC CONFIG SETTINGS: docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli config-help -l $lang
 #
 if ($config -ne $null -or $config -ne '') {
     docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate -i $source -l $lang -o /local/out/$name/$lang -c /local/$config
@@ -53,7 +52,6 @@ if ($config -ne $null -or $config -ne '') {
 
 # openapi-generator
 # https://openapi-generator.tech/
-# GET LANGUAGE SPECIFIC CONFIG SETTINGS: docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli config-help -g $lang
 #
 #if ($config -ne $null -or $config -ne '') {
 #    docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i $source -g $lang -o /local/out/$name/$lang -c /local/$config
