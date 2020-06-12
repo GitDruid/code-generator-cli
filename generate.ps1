@@ -1,6 +1,6 @@
 #
 # Script: Code generator from Swagger/OpenAPI specifications.
-# Author: Alessandro Galasso.
+# Author: GitDruid.
 # Requires: Docker Desktop.
 #
 param (

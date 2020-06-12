@@ -1,6 +1,6 @@
 #
 # Script: Language info for code generator.
-# Author: Alessandro Galasso.
+# Author: GitDruid.
 # Requires: Docker Desktop.
 #
 
