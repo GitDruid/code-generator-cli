@@ -1,0 +1,22 @@
+{
+  "packageName": "BiodiversitySDK",
+  "packageVersion": "1.0.0",
+  "sourceFolder": "src",
+  "interfacePrefix": "I",
+  "targetFramework": "v5.0",
+  "modelPropertyNaming": "PascalCase",
+  "hideGenerationTimestamp": true,
+  "sortParamsByRequiredFlag": true,
+  "useDateTimeOffset": false,
+  "useCollection": false,
+  "returnICollection": false,
+  "optionalMethodArgument": true,
+  "optionalAssemblyInfo": true,
+  "optionalProjectFile": true,
+  "optionalEmitDefaultValues": false,
+  "generatePropertyChanged": false,
+  "nonPublicApi": false,
+  "allowUnicodeIdentifiers": false,
+  "netCoreProjectFile": true,
+  "validatable": true
+}

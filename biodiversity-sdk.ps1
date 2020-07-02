@@ -1,0 +1,1 @@
+.\generate.ps1 -name BiodiversitySDK -source https://webservices-test.scientificnet.org/rest/biodiversity/swagger/docs/v1 -lang csharp -config biodiversity-sdk-csharp-config.sc.json

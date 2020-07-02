@@ -4,6 +4,10 @@
 # Requires: Docker Desktop.
 #
 param (
+    [Parameter()]
+    [ValidateSet('swagger-codegen','openapi-generator')]
+    $framework='swagger-codegen',
+
     #[Parameter(Mandatory)]
     $name,
 
@@ -23,6 +27,7 @@ if ($name -eq $null -or $name -eq '') {
 $title = "
 Going to create API client
 ==========================
+Framework:       '$framework'
 Name:            '$name'
 Source:          '$source'
 Target language: '$lang'
@@ -41,20 +46,30 @@ if ($decision -eq 0) {
     Exit 1
 }
 
-# swagger-codegen
-# https://swagger.io/tools/swagger-codegen/
-#
-if ($config -ne $null -or $config -ne '') {
-    docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate -i $source -l $lang -o /local/out/$name/$lang -c /local/$config
-} else {
-    docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate -i $source -l $lang -o /local/out/$name/$lang
-}
+if ($framework -eq 'swagger-codegen') {
 
-# openapi-generator
-# https://openapi-generator.tech/
-#
-#if ($config -ne $null -or $config -ne '') {
-#    docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i $source -g $lang -o /local/out/$name/$lang -c /local/$config
-#} else {
-#    docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate -i $source -g $lang -o /local/out/$name/$lang
-#}
+    # swagger-codegen
+    # https://swagger.io/tools/swagger-codegen/
+    #
+    if ($config -ne $null -or $config -ne '') {
+        docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate -i $source -l $lang -o /local/out/$name/$lang -c /local/$config
+    } else {
+        docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate -i $source -l $lang -o /local/out/$name/$lang
+    }
+
+} elseif ($framework -eq 'openapi-generator') {
+
+    # openapi-generator
+    # https://openapi-generator.tech/
+    #
+    if ($config -ne $null -or $config -ne '') {
+        docker run --rm -v "${pwd}:/local" openapitools/openapi-generator-cli generate -i $source -g $lang -o /local/out/$name/$lang -c /local/$config
+    } else {
+        docker run --rm -v "${pwd}:/local" openapitools/openapi-generator-cli generate -i $source -g $lang -o /local/out/$name/$lang
+    }
+
+} else {
+
+    Write-Host 'Not supported framework.'
+
+}

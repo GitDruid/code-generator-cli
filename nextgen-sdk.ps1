@@ -1,0 +1,1 @@
+.\generate.ps1 -name NextGenSDK -source https://webservices-test.scientificnet.org/rest/cm/nextgen/swagger/docs/v1 -lang csharp -config nextgen-sdk-csharp-config.sc.json
