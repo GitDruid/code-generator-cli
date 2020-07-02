@@ -11,6 +11,7 @@ Scripts contains both version but the Swagger CodeGen is the one currently selec
 Customize generate.ps1 script by settings its param section:
 
     param (
+	$framework='swagger-codegen',
         $name,
         $source='http://petstore.swagger.io/v2/swagger.json',
         $lang='typescript-angular',
@@ -23,7 +24,7 @@ and then execute it:
 
 Alternatively you can pass parameters in the cli:
 
-    .\generate.ps1 -name MySampleSDK -source http://petstore.swagger.io/v2/swagger.json -lang typescript-angular -config angular-config.sc.json
+    .\generate.ps1 -framework openapi-generator -name MySampleSDK -source http://petstore.swagger.io/v2/swagger.json -lang typescript-angular -config angular-config.sc.json
 
 # Languages tool
 
