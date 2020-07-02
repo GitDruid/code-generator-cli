@@ -11,7 +11,7 @@ Scripts contains both version but the Swagger CodeGen is the one currently selec
 Customize generate.ps1 script by settings its param section:
 
     param (
-	$framework='swagger-codegen',
+        $framework='swagger-codegen',
         $name,
         $source='http://petstore.swagger.io/v2/swagger.json',
         $lang='typescript-angular',
