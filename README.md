@@ -1,10 +1,10 @@
 # Code generator from Swagger/OpenAPI specifications
 
 Windows PowerShell script for client code generation, given a Swagger/OpenAPI specification.  
-It requires Docker Desktop to run.  
+It requires Docker Desktop.  
   
 Currently there are two teams working on similar projects (see "Readings" below).  
-Scripts contains both version but the Swagger CodeGen is the one currently selected.  
+Scripts can use both version. The Swagger CodeGen is the default selection if the $framework parameter is not provided.  
 
 ## Usage
 
@@ -33,6 +33,11 @@ Retrieve info about supported languages and related config.
 ## Usage
 
     .\lang.ps1
+
+or
+
+    .\lang.ps1 -framework openapi-generator
+    .\lang.ps1 -framework swagger-codegen
 
 # Readings
 
