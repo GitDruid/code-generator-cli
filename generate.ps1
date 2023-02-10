@@ -20,7 +20,7 @@ param (
     $config='angular-config.sc.json'
 )
 
-if ($name -eq $null -or $name -eq '') {
+if ($null -eq $name -or $name -eq '') {
     $name = New-Guid
 }
 
