@@ -39,6 +39,11 @@ or
     .\lang.ps1 -framework openapi-generator
     .\lang.ps1 -framework swagger-codegen
 
+## Future enhancements
+
+Integrate Kiota as new framework option  
+https://learn.microsoft.com/en-us/openapi/kiota/overview
+
 # Readings
 
 swagger-codegen  
